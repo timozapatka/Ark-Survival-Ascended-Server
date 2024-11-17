@@ -633,6 +633,7 @@ read_docker_compose_config() {
     "MOD_IDS") config_key="Mod IDs" ;;
     "PASSIVE_MODS") config_key="Passive Mods" ;;
     "CUSTOM_SERVER_ARGS") config_key="Custom Server Args" ;;
+    "LOAD_API") config_key="LOAD API" ;;
     *) config_key="$key" ;; # For any not explicitly mapped
     esac
     
@@ -702,6 +703,7 @@ EOF
       "Mod IDs") env_key="MOD_IDS" ;;
       "Passive Mods") env_key="PASSIVE_MODS" ;;
       "Custom Server Args") env_key="CUSTOM_SERVER_ARGS" ;;
+      "LOAD_API") env_key="LOAD_API" ;;
       *) env_key="$key" ;; # Default case if the mapping is direct
     esac
     

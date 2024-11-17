@@ -32,6 +32,7 @@ services:
       - MOD_IDS=                             # Add your mod IDs here, separated by commas, e.g., 123456789,987654321
       - PASSIVE_MODS=                        # Replace with your passive mods IDs
       - CUSTOM_SERVER_ARGS=                  # If You need to add more Custom Args -ForceRespawnDinos -ForceAllowCaveFlyers
+      - LOAD_API=FALSE                       # Set to TRUE to enable the Load API, FALSE to disable it
     ports:
       - "7777:7777/tcp"
       - "7777:7777/udp"

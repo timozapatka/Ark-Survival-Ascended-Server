@@ -86,6 +86,7 @@ start_server() {
   local server_password_arg=""
   local session_name_arg="SessionName=\"${SESSION_NAME}\""
   local notify_admin_commands_arg=""
+  local exe_file="/home/pok/arkserver/ShooterGame/Binaries/Win64/ArkAscendedServer.exe"
 
   # Check if MOD_IDS is set and not empty
   if [ -n "$MOD_IDS" ]; then
@@ -129,8 +130,14 @@ start_server() {
     notify_admin_commands_arg="-NotifyAdminCommandsInChat"
   fi
 
+  # Set API File if it parameter enabled
+  if [ "$ENABLE_API" = "TRUE" ]; then
+    echo "API Enabled - Starting with API"
+    exe_file="/home/pok/arkserver/ShooterGame/Binaries/Win64/AsaApiLoader.exe"
+  fi
+
   # Check if the server files exist
-  if [ ! -f "/home/pok/arkserver/ShooterGame/Binaries/Win64/ArkAscendedServer.exe" ]; then
+  if [ ! -f $exe_file ]; then
     echo "Error: Server files not found. Please ensure the server is properly installed."
     exit 1
   fi
@@ -142,7 +149,7 @@ start_server() {
   #fi
   
   # Construct the full server start command
-  local server_command="proton run /home/pok/arkserver/ShooterGame/Binaries/Win64/ArkAscendedServer.exe $MAP_PATH?listen?$session_name_arg?${rcon_args}${server_password_arg}?ServerAdminPassword=${SERVER_ADMIN_PASSWORD} -Port=${ASA_PORT} -WinLiveMaxPlayers=${MAX_PLAYERS} $cluster_id_arg -servergamelog -servergamelogincludetribelogs -ServerRCONOutputTribeLogs $notify_admin_commands_arg $custom_args $mods_arg $battleye_arg $passive_mods_arg"
+  local server_command="proton run $exe_file $MAP_PATH?listen?$session_name_arg?${rcon_args}${server_password_arg}?ServerAdminPassword=${SERVER_ADMIN_PASSWORD} -Port=${ASA_PORT} -WinLiveMaxPlayers=${MAX_PLAYERS} $cluster_id_arg -servergamelog -servergamelogincludetribelogs -ServerRCONOutputTribeLogs $notify_admin_commands_arg $custom_args $mods_arg $battleye_arg $passive_mods_arg"
 
   # Start the server using Proton-GE
   echo "Starting server with Proton-GE..."
