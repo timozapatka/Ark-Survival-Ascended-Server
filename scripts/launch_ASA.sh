@@ -133,7 +133,7 @@ start_server() {
   echo "---- CHECK FOR API USAGE ----"
 
   # Set API File if it parameter enabled
-  if [ "$ENABLE_API" = "TRUE" ]; then
+  if [ "$LOAD_API" = "TRUE" ]; then
     echo "API Enabled - Starting with API"
     exe_file="/home/pok/arkserver/ShooterGame/Binaries/Win64/AsaApiLoader.exe"
   fi
