@@ -130,6 +130,8 @@ start_server() {
     notify_admin_commands_arg="-NotifyAdminCommandsInChat"
   fi
 
+  echo "---- CHECK FOR API USAGE ----"
+
   # Set API File if it parameter enabled
   if [ "$ENABLE_API" = "TRUE" ]; then
     echo "API Enabled - Starting with API"
